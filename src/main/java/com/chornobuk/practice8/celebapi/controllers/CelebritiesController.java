@@ -1,6 +1,7 @@
 package com.chornobuk.practice8.celebapi.controllers;
 
-import com.chornobuk.practice8.celebapi.storage.StorageService;
+import com.chornobuk.practice8.celebapi.services.DataUploadingService;
+import com.chornobuk.practice8.celebapi.services.StorageService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,12 +13,12 @@ import java.util.List;
 @RequestMapping("celebrities")
 public class CelebritiesController {
 
-    private StorageService storageService;
+    private DataUploadingService dataUploadingService;
 
     @PostMapping("upload")
     @ResponseBody
     public String getDataFile(@RequestParam("file") MultipartFile file) {
-        storageService.store(file);
+        dataUploadingService.saveUploadedData(file);
         return "file uploaded";
     }
 

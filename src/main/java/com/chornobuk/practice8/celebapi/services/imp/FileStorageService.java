@@ -1,5 +1,7 @@
-package com.chornobuk.practice8.celebapi.storage;
+package com.chornobuk.practice8.celebapi.services.imp;
 
+import com.chornobuk.practice8.celebapi.exceptions.StorageException;
+import com.chornobuk.practice8.celebapi.services.StorageService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
@@ -36,7 +38,7 @@ public class FileStorageService implements StorageService {
     }
 
     @Override
-    public void store(MultipartFile file) {
+    public Path store(MultipartFile file) {
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file.");
@@ -50,6 +52,7 @@ public class FileStorageService implements StorageService {
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
             }
+            return destinationFile;
         } catch (IOException e) {
             throw new StorageException("Failed to store file.", e);
         }
