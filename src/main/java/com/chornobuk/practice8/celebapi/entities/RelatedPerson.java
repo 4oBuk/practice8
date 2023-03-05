@@ -34,23 +34,6 @@ public class RelatedPerson {
     private String relationshipType;
 
 
+    @JsonProperty("date_confirmed")
     private String dateConfirmed;
-//    private String fullNameEn;
-//
-//    private String lastnameEn;
-//
-//    private Boolean died;
-//
-//    private String typeOfOfficial;
-//
-//    private String lastJobTittleEn;
-//
-//
-//    private String url;
-//
-//    private String lastWorkplace;
-//
-//    private List<String> names;
-//
-
 }
