@@ -33,6 +33,8 @@ public class RelatedPerson {
     @JsonProperty("relationship_type")
     private String relationshipType;
 
+
+    private String dateConfirmed;
 //    private String fullNameEn;
 //
 //    private String lastnameEn;

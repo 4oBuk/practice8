@@ -22,7 +22,7 @@ public class Declaration {
     @JsonProperty("region_uk")
     private String regionUk;
 
-    @JsonProperty("region_en")
+    @JsonProperty("office_en")
     private String officeEn;
 
     @JsonProperty("position_uk")

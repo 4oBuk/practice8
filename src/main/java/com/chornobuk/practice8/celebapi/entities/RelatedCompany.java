@@ -27,7 +27,7 @@ public class RelatedCompany {
     private Boolean toCompanyIsState;
     private Double share;
 
-    private String DateConfirmed;
+    private String dateConfirmed;
 
     private String toCompanyUk;
 
@@ -36,6 +36,5 @@ public class RelatedCompany {
     private String toCompanyEn;
 
     private String relationshipTypeUk;
-
 
 }

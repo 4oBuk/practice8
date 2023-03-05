@@ -1,10 +1,9 @@
 package com.chornobuk.practice8.celebapi.services.imp;
 
+import com.chornobuk.practice8.celebapi.CelebrityJsonParser;
 import com.chornobuk.practice8.celebapi.services.ArchiveService;
 import com.chornobuk.practice8.celebapi.services.DataUploadingService;
 import com.chornobuk.practice8.celebapi.services.StorageService;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,17 +15,19 @@ public class DataUploadingServiceImp implements DataUploadingService {
     private final ArchiveService archiveService;
     private final StorageService storageService;
 
-    private final String pathToStorage;
+    private final CelebrityJsonParser parser;
 
-    public DataUploadingServiceImp(ArchiveService archiveService, StorageService storageService, @Value("${storage.path}") String pathToStorage) {
+
+    public DataUploadingServiceImp(ArchiveService archiveService, StorageService storageService, CelebrityJsonParser parser) {
         this.archiveService = archiveService;
         this.storageService = storageService;
-        this.pathToStorage = pathToStorage;
+        this.parser = parser;
     }
 
     @Override
     public void saveUploadedData(MultipartFile file) {
         Path path = storageService.store(file);
-        archiveService.unzip(path.toString());
+        Path json = archiveService.unzip(path.toString());
+        parser.writeFirmJsonToDB(json.toString());
     }
 }
