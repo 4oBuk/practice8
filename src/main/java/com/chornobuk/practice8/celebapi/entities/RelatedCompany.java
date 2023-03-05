@@ -9,8 +9,8 @@ import org.springframework.data.annotation.Id;
 @Setter
 @ToString
 public class RelatedCompany {
-    @Id
-    private String id;
+//    @Id
+//    private String id;
 
     private String relationshipTypeEn;
 

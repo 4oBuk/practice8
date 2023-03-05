@@ -32,13 +32,16 @@ public class CelebrityJsonParser {
         File data = new File(path);
         JsonFactory factory = new JsonFactory();
         try (JsonParser parser = factory.createParser(data)) {
+            System.out.println("started writing");
             if (parser.nextToken() == JsonToken.START_ARRAY) {
                 parser.nextToken();
-                while (parser.hasCurrentToken()) {
+                while (parser.hasCurrentToken() && parser.getCurrentToken() != JsonToken.END_OBJECT) {
                     Celebrity celebrity = mapCelebrity(parser);
+                    template.save(celebrity, "celebrity");
                     parser.nextToken();
                 }
             }
+            System.out.println("data has been written");
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -121,7 +124,6 @@ public class CelebrityJsonParser {
                 }
             }
         }
-        System.out.println(celebrity);
         return celebrity;
     }
 

@@ -2,6 +2,7 @@ package com.chornobuk.practice8.celebapi.entities;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@Document("celebrity")
 public class Celebrity {
     @Id
     private String id;
