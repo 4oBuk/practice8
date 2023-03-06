@@ -28,6 +28,27 @@ public class CelebrityRepositoryImpl implements CelebrityRepository {
 
         PageRequest pageRequest = PageRequest.of(dto.getPage(), dto.getPageSize(), Sort.by(Sort.Direction.ASC, Celebrity.Fields.id));
         Query query = new Query();
+        query.fields()
+                .include(Celebrity.Fields.id)
+                .include(Celebrity.Fields.isPep)
+                .include(Celebrity.Fields.fullName)
+                .include(Celebrity.Fields.fullNameEn)
+                .include(Celebrity.Fields.firstName)
+                .include(Celebrity.Fields.firstNameEn)
+                .include(Celebrity.Fields.lastname)
+                .include(Celebrity.Fields.lastNameEn)
+                .include(Celebrity.Fields.patronymic)
+                .include(Celebrity.Fields.patronymicEn)
+                .include(Celebrity.Fields.relatedPersons)
+                .include(Celebrity.Fields.relatedCompanies)
+                .include(Celebrity.Fields.declarations)
+                .include(Celebrity.Fields.typeOfOfficial)
+                .include(Celebrity.Fields.typeOfOfficialEn)
+                .include(Celebrity.Fields.lastWorkplace)
+                .include(Celebrity.Fields.lastWorkplaceEn)
+                .include(Celebrity.Fields.lastJobTitle)
+                .include(Celebrity.Fields.lastJobTitleEn)
+                .include(Celebrity.Fields.died);
 
         if (StringUtils.isNotBlank(dto.getFirstName())) {
             query.addCriteria(Criteria.where(Celebrity.Fields.firstName).is(dto.getFirstName()));
@@ -39,10 +60,10 @@ public class CelebrityRepositoryImpl implements CelebrityRepository {
             query.addCriteria(Criteria.where(Celebrity.Fields.patronymic).is(dto.getPatronymic()));
         }
         query.with(pageRequest);
-        final List<Celebrity> celebrties = template.find(query, Celebrity.class);
+        final List<Celebrity> celebrities = template.find(query, Celebrity.class);
 
         return PageableExecutionUtils.getPage(
-                celebrties,
+                celebrities,
                 pageRequest,
                 () -> template.count((Query.of(query).limit(-1).skip(-1)), Celebrity.class)
         );

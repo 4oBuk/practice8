@@ -1,5 +1,6 @@
 package com.chornobuk.practice8.celebapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
@@ -15,6 +16,7 @@ import java.util.List;
 @Setter
 @ToString
 @FieldNameConstants
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Document("celebrity")
 public class Celebrity {
     @Id
