@@ -13,6 +13,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -24,14 +26,20 @@ public class PepParsingServiceImpl implements PepParsingService {
     public void writeJsonFileToDB(String path) {
         template.remove(new Query(), "pep");
         File data = new File(path);
-        JsonFactory factory = new JsonFactory();
-        try (JsonParser parser = factory.createParser(data)) {
+        List<Pep> peps = new LinkedList<>();
+        try (JsonParser parser = objectMapper.getFactory().createParser(data)) {
             log.debug("started writing");
             if (parser.nextToken() == JsonToken.START_ARRAY) {
                 while (parser.nextToken() == JsonToken.START_OBJECT) {
                     Pep pep = objectMapper.readValue(parser, Pep.class);
-                    template.save(pep);
+                    peps.add(pep);
+                    if(peps.size() == 50) {
+                        template.insertAll(peps);
+                        peps.clear();
+                    }
                 }
+//                write the rest of elements
+                template.insertAll(peps);
             }
             log.debug("data has been written");
 
