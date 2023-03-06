@@ -1,8 +1,11 @@
 package com.chornobuk.practice8.celebapi.controllers;
 
+import com.chornobuk.practice8.celebapi.dtos.CelebrityQueryDto;
+import com.chornobuk.practice8.celebapi.entities.Celebrity;
+import com.chornobuk.practice8.celebapi.services.CelebrityService;
 import com.chornobuk.practice8.celebapi.services.DataUploadingService;
-import com.chornobuk.practice8.celebapi.services.StorageService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +17,7 @@ import java.util.List;
 public class CelebritiesController {
 
     private DataUploadingService dataUploadingService;
+    private CelebrityService celebrityService;
 
     @PostMapping("upload")
     @ResponseBody
@@ -28,7 +32,7 @@ public class CelebritiesController {
     }
 
     @GetMapping("search")
-    public List<String> findByName(@RequestParam String name, @RequestParam String surname, @RequestParam String middleName) {
-        return null;
+    public Page<Celebrity> findByName(@RequestBody CelebrityQueryDto dto) {
+        return celebrityService.getByFullName(dto);
     }
 }

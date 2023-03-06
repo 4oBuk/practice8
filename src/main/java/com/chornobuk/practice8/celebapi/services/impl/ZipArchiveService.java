@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi.services.imp;
+package com.chornobuk.practice8.celebapi.services.impl;
 
 import com.chornobuk.practice8.celebapi.services.ArchiveService;
 import org.springframework.stereotype.Service;

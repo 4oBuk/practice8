@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi.services.imp;
+package com.chornobuk.practice8.celebapi.services.impl;
 
 import com.chornobuk.practice8.celebapi.entities.Celebrity;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -18,7 +18,7 @@ public class CelebrityParsingService {
     private MongoTemplate template;
 
     private ObjectMapper objectMapper;
-
+//    todo: add interface
     public void writeFirmJsonToDB(String path) {
         template.remove(new Query(), "celebrity");
         File data = new File(path);

@@ -2,6 +2,8 @@ package com.chornobuk.practice8.celebapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import lombok.experimental.FieldNameConstants;
+import lombok.extern.jackson.Jacksonized;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@FieldNameConstants
 @Document("celebrity")
 public class Celebrity {
     @Id

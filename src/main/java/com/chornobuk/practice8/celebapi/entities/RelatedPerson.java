@@ -3,8 +3,6 @@ package com.chornobuk.practice8.celebapi.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

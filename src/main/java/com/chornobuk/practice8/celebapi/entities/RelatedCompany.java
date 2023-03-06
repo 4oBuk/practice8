@@ -2,7 +2,6 @@ package com.chornobuk.practice8.celebapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 @AllArgsConstructor
 @NoArgsConstructor

@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi.services.imp;
+package com.chornobuk.practice8.celebapi.services.impl;
 
 import com.chornobuk.practice8.celebapi.services.ArchiveService;
 import com.chornobuk.practice8.celebapi.services.DataUploadingService;
@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 
 @Service
-public class DataUploadingServiceImp implements DataUploadingService {
+public class DataUploadingServiceImpl implements DataUploadingService {
 
     private final ArchiveService archiveService;
     private final StorageService storageService;
@@ -17,7 +17,7 @@ public class DataUploadingServiceImp implements DataUploadingService {
     private final CelebrityParsingService parser;
 
 
-    public DataUploadingServiceImp(ArchiveService archiveService, StorageService storageService, CelebrityParsingService parser) {
+    public DataUploadingServiceImpl(ArchiveService archiveService, StorageService storageService, CelebrityParsingService parser) {
         this.archiveService = archiveService;
         this.storageService = storageService;
         this.parser = parser;
