@@ -30,7 +30,7 @@ public class PepController {
         return pepService.getMostPopularNames();
     }
 
-    @GetMapping("search")
+    @PostMapping("search")
     public Page<Pep> findByName(@RequestBody PepQueryDto dto) {
         return pepService.getByFullName(dto);
     }
