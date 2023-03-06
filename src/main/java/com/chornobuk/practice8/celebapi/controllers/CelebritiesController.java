@@ -5,6 +5,7 @@ import com.chornobuk.practice8.celebapi.entities.Celebrity;
 import com.chornobuk.practice8.celebapi.services.CelebrityService;
 import com.chornobuk.practice8.celebapi.services.DataUploadingService;
 import lombok.AllArgsConstructor;
+import org.bson.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,8 +28,8 @@ public class CelebritiesController {
     }
 
     @GetMapping("popularity")
-    public List<String> getMostPopularByName(@RequestParam int topSize) {
-        return null;
+    public Document getMostPopularByName() {
+        return celebrityService.getMostPopularNames();
     }
 
     @GetMapping("search")

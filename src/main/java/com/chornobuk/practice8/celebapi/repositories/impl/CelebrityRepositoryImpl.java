@@ -5,17 +5,20 @@ import com.chornobuk.practice8.celebapi.entities.Celebrity;
 import com.chornobuk.practice8.celebapi.repositories.CelebrityRepository;
 import io.micrometer.common.util.StringUtils;
 import lombok.AllArgsConstructor;
+import org.bson.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 @Repository
 @AllArgsConstructor
@@ -24,8 +27,6 @@ public class CelebrityRepositoryImpl implements CelebrityRepository {
 
     @Override
     public Page<Celebrity> findByFullName(CelebrityQueryDto dto) {
-//        todo: get only necessary fields
-
         PageRequest pageRequest = PageRequest.of(dto.getPage(), dto.getPageSize(), Sort.by(Sort.Direction.ASC, Celebrity.Fields.id));
         Query query = new Query();
         query.fields()
@@ -67,5 +68,24 @@ public class CelebrityRepositoryImpl implements CelebrityRepository {
                 pageRequest,
                 () -> template.count((Query.of(query).limit(-1).skip(-1)), Celebrity.class)
         );
+    }
+
+    @Override
+    public Document getMostPopularPepFirstnames(int sizeOfTop) {
+
+        Criteria criteria = Criteria.where(Celebrity.Fields.isPep).is(true);
+        MatchOperation matchOperation = match(criteria);
+        GroupOperation group = group(Celebrity.Fields.firstName).count().as("namePop");
+        SortOperation sort = sort(Sort.by(Sort.Direction.DESC, "namePop"));
+        LimitOperation limit = limit(sizeOfTop);
+        ProjectionOperation projectToMatchModel = project()
+                .andExpression(("_id")).as("name")
+                .andExclude("_id")
+                .andExpression("namePop").as("popularity");
+
+        Aggregation aggregation = newAggregation(matchOperation, group, sort, limit, projectToMatchModel);
+
+        AggregationResults<Document> result = template.aggregate(aggregation, "celebrity", Document.class);
+        return result.getRawResults();
     }
 }
