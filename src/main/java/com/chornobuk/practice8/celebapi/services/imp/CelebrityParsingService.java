@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi;
+package com.chornobuk.practice8.celebapi.services.imp;
 
 import com.chornobuk.practice8.celebapi.entities.Celebrity;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -14,7 +14,7 @@ import java.io.*;
 
 @Service
 @AllArgsConstructor
-public class CelebrityJsonParser {
+public class CelebrityParsingService {
     private MongoTemplate template;
 
     private ObjectMapper objectMapper;

@@ -1,6 +1,5 @@
 package com.chornobuk.practice8.celebapi.services.imp;
 
-import com.chornobuk.practice8.celebapi.CelebrityJsonParser;
 import com.chornobuk.practice8.celebapi.services.ArchiveService;
 import com.chornobuk.practice8.celebapi.services.DataUploadingService;
 import com.chornobuk.practice8.celebapi.services.StorageService;
@@ -15,10 +14,10 @@ public class DataUploadingServiceImp implements DataUploadingService {
     private final ArchiveService archiveService;
     private final StorageService storageService;
 
-    private final CelebrityJsonParser parser;
+    private final CelebrityParsingService parser;
 
 
-    public DataUploadingServiceImp(ArchiveService archiveService, StorageService storageService, CelebrityJsonParser parser) {
+    public DataUploadingServiceImp(ArchiveService archiveService, StorageService storageService, CelebrityParsingService parser) {
         this.archiveService = archiveService;
         this.storageService = storageService;
         this.parser = parser;
