@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class PepServiceImpl implements PepService {
 
-    private PepRepository pepRepository;
+    private final PepRepository pepRepository;
     private final static int DEFAULT_PAGE_SIZE = 10;
     private final static int DEFAULT_TOP_SIZE = 10;
 

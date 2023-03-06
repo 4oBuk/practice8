@@ -33,6 +33,6 @@ public class ZipArchiveService implements ArchiveService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;//todo: remove it
+        return null;
     }
 }
