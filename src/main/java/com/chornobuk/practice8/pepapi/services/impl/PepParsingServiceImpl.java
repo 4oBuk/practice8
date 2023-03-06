@@ -33,7 +33,7 @@ public class PepParsingServiceImpl implements PepParsingService {
                 while (parser.nextToken() == JsonToken.START_OBJECT) {
                     Pep pep = objectMapper.readValue(parser, Pep.class);
                     peps.add(pep);
-                    if(peps.size() == 50) {
+                    if(peps.size() == 100) {
                         template.insertAll(peps);
                         peps.clear();
                     }
