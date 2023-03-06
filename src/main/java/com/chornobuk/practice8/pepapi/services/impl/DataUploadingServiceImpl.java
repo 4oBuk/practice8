@@ -1,8 +1,8 @@
-package com.chornobuk.practice8.celebapi.services.impl;
+package com.chornobuk.practice8.pepapi.services.impl;
 
-import com.chornobuk.practice8.celebapi.services.ArchiveService;
-import com.chornobuk.practice8.celebapi.services.DataUploadingService;
-import com.chornobuk.practice8.celebapi.services.StorageService;
+import com.chornobuk.practice8.pepapi.services.ArchiveService;
+import com.chornobuk.practice8.pepapi.services.DataUploadingService;
+import com.chornobuk.practice8.pepapi.services.StorageService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,10 +14,10 @@ public class DataUploadingServiceImpl implements DataUploadingService {
     private final ArchiveService archiveService;
     private final StorageService storageService;
 
-    private final CelebrityParsingService parser;
+    private final PepParsingService parser;
 
 
-    public DataUploadingServiceImpl(ArchiveService archiveService, StorageService storageService, CelebrityParsingService parser) {
+    public DataUploadingServiceImpl(ArchiveService archiveService, StorageService storageService, PepParsingService parser) {
         this.archiveService = archiveService;
         this.storageService = storageService;
         this.parser = parser;

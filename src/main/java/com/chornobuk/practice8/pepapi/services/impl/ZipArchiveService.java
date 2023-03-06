@@ -1,6 +1,6 @@
-package com.chornobuk.practice8.celebapi.services.impl;
+package com.chornobuk.practice8.pepapi.services.impl;
 
-import com.chornobuk.practice8.celebapi.services.ArchiveService;
+import com.chornobuk.practice8.pepapi.services.ArchiveService;
 import org.springframework.stereotype.Service;
 
 import java.io.File;

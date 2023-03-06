@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi.services;
+package com.chornobuk.practice8.pepapi.services;
 
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi.exceptions;
+package com.chornobuk.practice8.pepapi.exceptions;
 
 public class StorageException extends RuntimeException {
     public StorageException(String message) {

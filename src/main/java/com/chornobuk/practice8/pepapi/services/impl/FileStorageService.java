@@ -1,7 +1,7 @@
-package com.chornobuk.practice8.celebapi.services.impl;
+package com.chornobuk.practice8.pepapi.services.impl;
 
-import com.chornobuk.practice8.celebapi.exceptions.StorageException;
-import com.chornobuk.practice8.celebapi.services.StorageService;
+import com.chornobuk.practice8.pepapi.exceptions.StorageException;
+import com.chornobuk.practice8.pepapi.services.StorageService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;

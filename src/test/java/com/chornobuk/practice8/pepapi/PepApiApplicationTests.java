@@ -1,10 +1,10 @@
-package com.chornobuk.practice8.celebapi;
+package com.chornobuk.practice8.pepapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CelebapiApplicationTests {
+class PepApiApplicationTests {
 
 	@Test
 	void contextLoads() {

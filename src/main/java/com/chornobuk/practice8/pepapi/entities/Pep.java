@@ -1,10 +1,9 @@
-package com.chornobuk.practice8.celebapi.entities;
+package com.chornobuk.practice8.pepapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
-import lombok.extern.jackson.Jacksonized;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,8 +16,8 @@ import java.util.List;
 @ToString
 @FieldNameConstants
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Document("celebrity")
-public class Celebrity {
+@Document("pep")
+public class Pep {
     @Id
     private String id;
 
@@ -84,7 +83,7 @@ public class Celebrity {
     @JsonProperty("related_persons")
     private List<RelatedPerson> relatedPersons;
 
-    @JsonProperty("reputatoin_convictions_uk")
+    @JsonProperty("reputation_convictions_uk")
     private String reputationConvictionsUk;
 
     @JsonProperty("reputation_crime_en")

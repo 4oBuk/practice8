@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi.dtos;
+package com.chornobuk.practice8.pepapi.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CelebrityQueryDto {
+public class PepQueryDto {
     @JsonProperty("first_name")
     private String firstName;
     @JsonProperty("last_name")

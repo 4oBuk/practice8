@@ -1,4 +1,4 @@
-package com.chornobuk.practice8.celebapi.entities;
+package com.chornobuk.practice8.pepapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
